@@ -1,0 +1,17 @@
+{% extends base %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        #list ul {
+            display: block;
+            z-index: 3;
+        }
+        main {
+            margin-left: {{ main_left }};
+            display: block;
+        }
+    </style>
+{% endblock %}
+
+{% block footer %}{% endblock %}

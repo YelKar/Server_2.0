@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        body {
+            position: fixed;
+        }
+        #other ul {
+            display: block;
+            z-index: 2;
+        }
+        main {
+            margin-left: 170px;
+        }
+    </style>
+{% endblock %}

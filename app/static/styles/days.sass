@@ -1,0 +1,69 @@
+@import "style"
+
+$main_left: $list_max_width + 50px
+
+%navigation
+  height: 50px
+  background-color: $menu_background_color
+  a
+    display: inline-block
+    box-sizing: border-box
+
+    height: 100%
+    padding: 10px
+    font-size: 20px
+    color: $text_color
+    &:hover
+      background-color: $hover_menu_background_color
+
+#navigation
+  @extend %navigation
+  position: fixed
+  bottom: 0
+  right: 0
+  left: $main_left
+
+  a
+    width: 50%
+    &.next
+      text-align: right
+      float: right
+      @include cursor(next, pointer)
+    &.prev
+      @include cursor(prev, pointer)
+  &_back
+    @extend %navigation
+    a
+      width: 100%
+
+
+#list
+  ul
+    display: block
+    z-index: 3
+  &:hover ul
+    display: block
+
+main, footer
+    margin-left: $main_left
+    display: block
+
+img
+  max-width: 100%
+  object-fit: contain
+  box-sizing: border-box
+  &[alt="Фоточка Кекса"]
+    object-fit: cover
+    width: 32%
+    aspect-ratio: (115 / 77)
+    border: 4px solid $header_background_color
+  &[alt="Кексик"]
+    object-fit: cover
+    width: 100%
+    height: 100%
+    aspect-ratio: 0.5
+
+#photo
+  width: 60%
+  margin-left: 15%
+  aspect-ratio: (115 / 77)

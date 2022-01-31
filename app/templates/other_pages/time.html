@@ -1,0 +1,34 @@
+{% extends base %}
+
+{% block content %}
+<a href="https://time.is/">
+        <p id="time"></p></a>
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <script type="text/javascript" src="../../static/scripts/time.js"></script>
+    <style>
+        #other ul {
+            display: block;
+        }
+        body{
+            position: fixed;
+            height: 80%;
+        }
+        main {
+            margin-left: calc(var(--menu_width) +
+            var(--menu_border_width) +
+            var(--other_width) + 20px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        p {
+            font-size: 5em;
+        }
+
+
+    </style>
+{% endblock %}

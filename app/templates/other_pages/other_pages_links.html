@@ -1,0 +1,42 @@
+{% extends base %}
+
+{% block content %}
+{##}
+{#<nav class="blog-navigation">#}
+{#    #}
+{#    <details>#}
+{#        <summary><a href={{ url_for("binClock") }}>Бинарные часы</a></summary>#}
+{#        <p>Часы основанные на двоичной системе счисления.</p>#}
+{#        <h4>Как понять время?</h4>#}
+{#        <p>Часы разделены на три блока: часы, минуты, секунды. В каждом блоке есть 5-6 индикаторов. Правый нижний означает - 2<sup>0</sup>, на один выше - 2<sup>1</sup>, следующий - 2<sup>2</sup> и так далее.#}
+{#            Следовательно, при сложении значений всех включенных индикаторов мы узнаем время.</p>#}
+{#    </details>#}
+{#    <details>#}
+{#        <summary><a href={{ url_for("dino") }}>Дино</a></summary>#}
+{#        <p>Аналог динозаврика Chrome</p>#}
+{#    </details>#}
+{#    <details>#}
+{#        <summary><a href="#">Скоро</a></summary>#}
+{#        <p>Здесь скоро, я надеюсь... если я не забуду, появятся ещё ссылки</p>#}
+{#    </details>#}
+{#</nav>#}
+
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        #other ul {
+            display: block;
+        }
+        body{
+            position: fixed;
+        }
+        main {
+            margin-left: calc(var(--menu_width) +
+            var(--menu_border_width) +
+            var(--other_width) + 20px);
+        }
+
+    </style>
+{% endblock %}

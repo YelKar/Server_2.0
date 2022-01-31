@@ -1,0 +1,54 @@
+{% extends base %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for("static", filename="styles/new_account.css") }}"> {% endblock %}
+
+{% block content %}
+    {% for category, msg in get_flashed_messages(True) %}
+    <div class="flash {{ category }}">{{ msg }}</div>
+    {% endfor %}
+    <br>
+<form action="{{ url_for("login") }}" method="POST" id="authorize">
+    <label for="username">Логин:</label>
+    <br>
+    <input type="text" name="username" id="username" placeholder="Введите никнейм">
+    <br>
+
+    <label for="password">Пароль:</label>
+    <input type="password" name="password" id="password" placeholder="Ваш пароль">
+
+{#    <label for="lastname">Фамилия:</label>#}
+{#    <br>#}
+{#    <input type="text" name="lastname" id="lastname" placeholder="Введите фамилию">#}
+{#    <br>#}
+{##}
+{#    <label for="email">Email:</label>#}
+{#    <br>#}
+{#    <input type="email" name="email" id="email" placeholder="your@ema.il">#}
+{#    <br>#}
+{##}
+{#    <label for="tel">Телефон:</label>#}
+{#    <br>#}
+{#    <input type="tel" name="tel" id="tel" placeholder="+7XXXXXXXXXX">#}
+{#    <br>#}
+{##}
+{#    <label for="select">#}
+{#        Выберите один:#}
+{#        <select name="select" id="select">#}
+{#            <option disabled selected>Выберите элемент</option>#}
+{#            {% for i in ["Какая-то заявка", "Еще какая-то заявка", "И еще какая-то заявка"] %}#}
+{#            <option>{{ i }}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#    </label>#}
+{#    <br>#}
+{#    <input type="" name="" id="">#}
+    <br>
+    <div class="checkbox">
+    <input type="checkbox" name="remember" id="checkbox" class="checkbox_input">
+    <label class="checkbox_label" for="checkbox">Запомнить</label>
+    </div>
+    <br>
+
+    <input type="submit" value="Отправить">
+</form>
+{% endblock %}

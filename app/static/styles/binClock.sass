@@ -1,0 +1,60 @@
+@import "style.sass"
+#other ul
+    display: block
+
+body
+    position: fixed
+    height: 80%
+main
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 100%
+
+.clock
+    position: relative
+    width: 80%
+    background-color: $background-color
+    display: flex
+    overflow: hidden
+    aspect-ratio: (6 / 4)
+    color: rgba(0, 0, 0, 0)
+    @media (min-width: 1100px)
+        width: 60%
+
+div div
+    height: 100%
+    width: (100% / 3)
+    div
+        width: 50%
+        height: 25%
+        position: relative
+        display: flex
+        align-items: center
+        font:
+            size: 2em
+            weight: bold
+        justify-content: center
+        box-sizing: border-box
+        border: 5px solid $background_color
+        @media (min-width: 1100px)
+            font-size: 70px
+
+.minute
+    left: (100% / 3)
+    top: -100%
+.second
+    left: (100% / 3 * 2)
+    top: -100%
+
+#h16
+    top: 75%
+    left: 0
+#h1, #h2, #h4, #h8
+    top: -25%
+    left: 50%
+#m1, #m2, #m4, #m8, #s1, #s2, #s4, #s8
+    top: -50%
+    left: 50%
+#m16, #m32, #s16, #s32
+    top: 50%

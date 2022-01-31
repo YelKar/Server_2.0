@@ -1,0 +1,72 @@
+.game {
+  width: 600px;
+  height: 200px;
+  border-bottom: 5px solid #ccc;
+  box-shadow: 0 0 10px #ccc;
+  margin: auto;
+  margin-top: 100px;
+  overflow: hidden;
+  padding: 5px;
+}
+
+#dino {
+  width: 50px;
+  height: 50px;
+  background-image: url(../img/other/t-rex.png);
+  background-size: 50px 50px;
+  position: relative;
+  top: 150px;
+}
+
+#cactus {
+  width: 25px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: url(../img/other/cactus.png);
+  background-size: 30px 40px;
+  position: relative;
+  top: 110px;
+  left: 580px;
+  animation: cactusMov 1s infinite linear;
+}
+
+#GameOver {
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/other/gameOver.png);
+  background-size: 100% 100%;
+  margin-top: -50px;
+  visibility: hidden;
+}
+
+.die {
+  animation: die 0s forwards;
+}
+
+@keyframes die {
+  100% {
+    background-image: url(../img/other/t-rex-d.png);
+  }
+}
+@keyframes cactusMov {
+  0% {
+    left: 580px;
+  }
+  100% {
+    left: -30px;
+  }
+}
+.jump {
+  animation: jump 0.3s 2 ease-out alternate;
+}
+
+@keyframes jump {
+  0% {
+    top: 150px;
+  }
+  100% {
+    top: 80px;
+  }
+}
+
+/*# sourceMappingURL=dino_style.css.map */

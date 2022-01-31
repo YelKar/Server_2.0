@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block footer %}
+    <nav id="navigation">
+        <a href="{{ url_for(name if num > 1 else 'index', num=num - 1) }}" class="prev">
+            {% if num > 1 %} Предыдущий {% else %} Главная {% endif %}
+        </a>
+        <a href="{{ url_for(name if num < max else 'index', num=num + 1) }}" class="next">
+            {% if num < max %} Следующий {% else %} Главная {% endif %}
+        </a>
+    </nav>
+{% endblock %}
+
+
+{% block style %}
+    <link href={{ url_for("static", filename="/styles/days.css") }} rel="stylesheet" type="text/css">
+{% endblock %}

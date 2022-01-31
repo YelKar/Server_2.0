@@ -1,0 +1,22 @@
+{% extends base %}
+
+{% block content %}
+    <a href="{{ url_for("login") }}"><img src="{{ url_for("static", filename="img/raccoon_icon.svg") }}" alt="raccoon" width="300" height="300"></a>
+    <fieldset id="skills">
+        <legend>Навыки</legend>
+        <h3>HTML - HyperText Markup Language</h3><progress value="60" max="100"></progress>
+        <h3>CSS - Cascading Style Sheets</h3><progress value="20" max="100"></progress>
+        <h3>SASS/SCSS - Syntactically Awesome Style sheets</h3><progress value="30" max="100"></progress>
+        <h3>JavaScript</h3><progress value="10" max="100"></progress>
+    </fieldset>
+    <a href="{{ url_for("new_account") }}">Форма</a>
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+    main {
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+{% endblock %}

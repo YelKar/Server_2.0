@@ -1,0 +1,102 @@
+{% extends base %}
+
+{% block content %}
+    <div id="messenger">
+        <p id="mess"></p>
+        <script type="text/javascript" src="../static/scripts/messenger.js"></script>
+        <form action="">
+            <label for="text_in"><input type="text" placeholder="Текст сообщения" id="text_in"></label>
+            <a id="send_button" onclick="enterMessage();"><img src="../static/img/other/send.png" alt="send" width="30"></a>
+        </form>
+    </div>
+
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+        #messenger {
+            border: 3px solid #555;
+            width: 50%;
+            min-width: 500px;
+            top: 150px;
+            bottom: 50px;
+
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            position: fixed;
+            overflow-y: scroll;
+        }
+
+        #mess {
+            width: 90%;
+            margin: 5%;
+        }
+
+        #send_button {
+            display: inline-block;
+            border: 3px solid #555;
+            border-left: none;
+            background-color: #333;
+            box-sizing: border-box;
+            padding: 10px;
+            height: 60px;
+            float: right;
+            width: 15%;
+        }
+
+        p {
+            word-break: break-word;
+        }
+
+        fieldset {
+            width: 90%;
+            border: 3px solid #555;
+            background-color: #333;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        legend {
+            font-size: 20px;
+        }
+        .message {
+            background-color: #444;
+            padding: 10px;
+        }
+
+        form {
+            width: 90%;
+            height: 50px;
+            padding: 10px;
+            display: block;
+        }
+
+         #text_in {
+            height: 60px;
+            border: 3px solid #555;
+            background-color: #333;
+            padding: 0 10px;
+            box-sizing: border-box;
+            color: #999;
+            font-size: 30px;
+            width: 85%;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #username {
+            height: 80px;
+            width: 500px;
+            border: 3px solid #555;
+            background-color: #333;
+            color: #999;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+{% block h1 %}
+    <label for="username"><input type="text" maxlength="10" id="username"></label>
+{% endblock %}

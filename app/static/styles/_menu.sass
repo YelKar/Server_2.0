@@ -1,0 +1,91 @@
+@import "variables"
+.button_img
+  width: $menu_width * 0.675 !important
+  max-height: $menu_width
+
+#menu
+  position: fixed
+  background-color: $menu_background_color
+  height: 100%
+  width: $menu_width
+  top: 0
+  z-index: 5
+  border-left: $menu_border_width solid $header_background_color
+  padding-bottom: 100px
+  ul
+    list-style: none
+    display: block
+    width: $menu_width
+    height: 100%
+    position: relative
+    margin: 0
+    padding: 0
+    li
+      display: block
+      width: $menu_width
+      height: auto
+      position: relative
+      a
+        position: relative
+        display: block
+        width: $menu_width
+        height: $menu_width
+        box-sizing: border-box
+        font-size: 16px
+        line-height: 2em
+        padding: 10px 15px
+        text-decoration: none
+      a:hover, &:hover
+        background-color: $hover_menu_background_color
+
+
+%open_menu
+    ul
+        position: absolute
+        z-index: 4
+        margin-left: $menu_width
+        height: 100%
+        top: 0
+        display: none
+        background-color: $hover_menu_background_color
+        overflow-y: auto
+        padding-bottom: 100px
+        border-right: 5px solid $background_color
+        li
+            width: 100%
+            a[href]
+                white-space: nowrap
+                background-color: $hover_menu_background_color
+                width: 100%
+                text-decoration: none
+                font-weight: bold
+                color: $text_color
+                &[href]:hover
+                    background-color: #252525
+
+    &:hover ul
+        display: block
+
+
+#list
+    @extend %open_menu
+    ul
+        width: auto
+        min-width: $list_min_width
+        max-width: $list_max_width
+        top: -$menu_width
+        li a
+            padding: 5px 20px 4px 20px
+            height: 40px
+
+
+#other
+    @extend %open_menu
+    ul
+        width: $menu_width
+        min-width: $menu_width
+        top: $menu_width * -2
+        li a
+            height: auto
+            max-height: $menu_width
+

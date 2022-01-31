@@ -1,0 +1,16 @@
+{% extends base %}
+
+{% block content %}
+    <p id="os"></p>
+    <script type="text/javascript">
+        document.getElementById("os").innerHTML = `${detectOs()} - ${detectClient()}`;
+    </script>
+    <style>
+        p {
+            position: absolute;
+            top: 10%;
+            font-size: 100px;
+        }
+    </style>
+{% endblock %}
+

@@ -1,0 +1,279 @@
+@charset "UTF-8";
+html {
+  cursor: url("../files/cursors/cursor.cur"), default;
+}
+
+body {
+  width: 100%;
+  background-color: #222;
+  color: #999;
+  font-family: Calibri, sans-serif !important;
+  font-style: italic;
+  margin: 0;
+}
+
+main, footer {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  margin-left: 130px;
+  padding: 20px;
+  z-index: 1;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #555;
+  z-index: 10;
+}
+
+a[href] {
+  text-decoration: none;
+  font-weight: bold;
+  font-style: italic;
+  color: #b99;
+  cursor: url("../files/cursors/link.cur"), pointer;
+}
+a[href]:visited {
+  color: #bb8383;
+}
+a[href]:hover {
+  color: #baa;
+}
+a[href]:visited:hover {
+  color: #997777;
+}
+a[href]:active, a[href]:visited:active {
+  color: #644;
+}
+
+#skills {
+  box-sizing: border-box;
+  border: 8px solid #555;
+  max-width: 1000px;
+  width: 100%;
+  padding: 20px;
+}
+#skills legend {
+  font-size: 2em;
+  font-weight: bold;
+  padding: 5px;
+}
+#skills progress {
+  border: none;
+  width: 100%;
+  height: 25px;
+  overflow: hidden;
+}
+#skills progress::-webkit-progress-bar {
+  width: 100%;
+  background-color: #444;
+}
+#skills progress::-webkit-progress-value {
+  background-color: #666;
+}
+
+body::-webkit-scrollbar, .menu_open::-webkit-scrollbar, #messenger::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-track, .menu_open::-webkit-scrollbar-track, #messenger::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+body::-webkit-scrollbar-thumb, .menu_open::-webkit-scrollbar-thumb, #messenger::-webkit-scrollbar-thumb {
+  background-color: #555;
+}
+
+.menu_open::-webkit-scrollbar {
+  width: 5px;
+}
+.menu_open::-webkit-scrollbar-track {
+  margin-bottom: 100px;
+}
+
+hr {
+  border: 1px solid;
+  width: 100%;
+}
+
+button, input[type=button], input[type=reset], input[type=submit] {
+  cursor: url("../files/cursors/button.cur"), pointer;
+}
+
+path {
+  stroke: #999;
+}
+
+.button_img {
+  width: 54px !important;
+  max-height: 80px;
+}
+
+#menu {
+  position: fixed;
+  background-color: #3a3a3a;
+  height: 100%;
+  width: 80px;
+  top: 0;
+  z-index: 5;
+  border-left: 10px solid #555;
+  padding-bottom: 100px;
+}
+#menu ul {
+  list-style: none;
+  display: block;
+  width: 80px;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#menu ul li {
+  display: block;
+  width: 80px;
+  height: auto;
+  position: relative;
+}
+#menu ul li a {
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 80px;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 2em;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+#menu ul li a:hover, #menu ul li:hover {
+  background-color: #2b2b2b;
+}
+
+#other ul, #list ul {
+  position: absolute;
+  z-index: 4;
+  margin-left: 80px;
+  height: 100%;
+  top: 0;
+  display: none;
+  background-color: #2b2b2b;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  border-right: 5px solid #222;
+}
+#other ul li, #list ul li {
+  width: 100%;
+}
+#other ul li a[href], #list ul li a[href] {
+  white-space: nowrap;
+  background-color: #2b2b2b;
+  width: 100%;
+  text-decoration: none;
+  font-weight: bold;
+  color: #999;
+}
+#other ul li a[href][href]:hover, #list ul li a[href][href]:hover {
+  background-color: #252525;
+}
+#other:hover ul, #list:hover ul {
+  display: block;
+}
+
+#list ul {
+  width: auto;
+  min-width: 250px;
+  max-width: 400px;
+  top: -80px;
+}
+#list ul li a {
+  padding: 5px 20px 4px 20px;
+  height: 40px;
+}
+
+#other ul {
+  width: 80px;
+  min-width: 80px;
+  top: -160px;
+}
+#other ul li a {
+  height: auto;
+  max-height: 80px;
+}
+
+#navigation_back, #navigation {
+  height: 50px;
+  background-color: #3a3a3a;
+}
+#navigation_back a, #navigation a {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+  font-size: 20px;
+  color: #999;
+}
+#navigation_back a:hover, #navigation a:hover {
+  background-color: #2b2b2b;
+}
+
+#navigation {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 450px;
+}
+#navigation a {
+  width: 50%;
+}
+#navigation a.next {
+  text-align: right;
+  float: right;
+  cursor: url("../files/cursors/next.cur"), pointer;
+}
+#navigation a.prev {
+  cursor: url("../files/cursors/prev.cur"), pointer;
+}
+#navigation_back a {
+  width: 100%;
+}
+
+#list ul {
+  display: block;
+  z-index: 3;
+}
+#list:hover ul {
+  display: block;
+}
+
+main, footer {
+  margin-left: 450px;
+  display: block;
+}
+
+img {
+  max-width: 100%;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+img[alt="Фоточка Кекса"] {
+  object-fit: cover;
+  width: 32%;
+  aspect-ratio: 1.4935064935;
+  border: 4px solid #555;
+}
+img[alt=Кексик] {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 0.5;
+}
+
+#photo {
+  width: 60%;
+  margin-left: 15%;
+  aspect-ratio: 1.4935064935;
+}
+
+/*# sourceMappingURL=days.css.map */

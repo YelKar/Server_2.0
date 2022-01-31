@@ -1,0 +1,15 @@
+{% extends base %}
+
+{% block content %}
+      <article>
+        <h1>День пятнадцатый. Галерея селфи</h1>
+        <p>Сегодня опять заходил Кекс, сказал, что для его бизнеса на сайте ему нужно больше селфи, как в инстаграме. Сделали с ним небольшую селфи-галерею. При нажатии на миниатюру открывается крупное изображение.</p>
+        <p>
+          <a href={{ url_for("photos", num=1) }}><img src="{{ url_for("static", filename="/files/preview-1.jpg") }}" alt="Фоточка Кекса" title="Фотка 1"></a>
+          <a href={{ url_for("photos", num=2) }}><img src="{{ url_for("static", filename="/files/preview-2.jpg") }}" alt="Фоточка Кекса" title="Фотка 2"></a>
+          <a href={{ url_for("photos", num=3) }}><img src="{{ url_for("static", filename="/files/preview-3.jpg") }}" alt="Фоточка Кекса" title="Фотка 3"></a>
+        </p>
+      </article>
+    <hr>
+{% endblock %}
+

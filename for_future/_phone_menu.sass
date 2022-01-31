@@ -1,0 +1,55 @@
+@import "../app/static/styles/variables"
+$header_height: $header_height * 1.4
+
+.button_img
+  width: $header_height * 0.675 !important
+  max-height: $header_height
+
+#menu
+  position: fixed
+  background-color: $menu_background_color
+  box-sizing: border-box
+  border: none
+  height: $header_height
+  width: 100%
+  top: auto
+  bottom: 0
+  padding-bottom: 0
+  ul
+    display: flex
+    width: $header_height
+    li
+      width: $header_height
+      a
+        width: $header_height
+        height: $header_height
+
+#list, #other
+  ul
+    display: none
+    position: fixed
+    margin: 0
+    top: $header_height
+    bottom: $header_height
+    height: auto
+    width: auto
+    left: 0
+    right: 0
+    max-width: none
+    li
+      border: 5px solid $header_background_color
+      box-sizing: border-box
+      height: $header_height
+
+  &:hover ul
+        display: none
+
+#list ul li
+  width: 100%
+  a
+        width: 100%
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: 2em

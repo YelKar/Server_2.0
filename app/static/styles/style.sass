@@ -1,0 +1,95 @@
+@import "variables"
+html
+    @include cursor("cursor", default)
+
+body
+    width: 100%
+    background-color: $background_color
+    color: $text_color
+    font:
+        family: Calibri, sans-serif !important
+        style: italic
+    margin: 0
+
+main, footer
+    display: flex
+    align-items: center
+    flex-flow: column
+    margin-left: $menu_width + $menu_border_width + 40px
+    padding: 20px
+    z-index: 1
+
+header
+    display: flex
+    justify-content: center
+    align-items: center
+
+    height: $header_height
+    background-color: $header_background_color
+
+    z-index: 10
+
+a[href]
+    text-decoration: none
+    font-weight: bold
+    font-style: italic
+    color: #b99
+    @include cursor(link, pointer)
+    &:visited
+        color: #bb8383
+    &:hover
+        color: #baa
+    &:visited:hover
+        color: #997777
+    &:active,
+    &:visited:active
+        color: #644
+
+#skills
+    box-sizing: border-box
+    border: 8px solid $header_background_color
+    max-width: 1000px
+    width: 100%
+    padding: 20px
+    legend
+        font:
+            size: 2em
+            weight: bold
+        padding: 5px
+    progress
+        border: none
+        width: 100%
+        height: 25px
+        overflow: hidden
+        &::-webkit-progress-bar
+            width: 100%
+            background-color: #444
+        &::-webkit-progress-value
+            background-color: #666
+
+body, .menu_open, #messenger
+    &::-webkit-scrollbar
+        width: 8px
+        &-track
+            background-color: rgba(0, 0, 0, 0)
+        &-thumb
+            background-color: $header_background_color
+
+.menu_open::-webkit-scrollbar
+    width: 5px
+    &-track
+        margin-bottom: 100px
+
+hr
+    border: 1px solid
+    width: 100%
+
+button, input[type="button"], input[type="reset"], input[type="submit"]
+    @include cursor(button, pointer)
+
+path
+    stroke: $text_color
+
+@import "menu"
+
+
