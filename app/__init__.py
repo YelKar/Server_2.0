@@ -12,6 +12,11 @@ days_base = "days_base.html"
 
 messages_file_route = "app/static/files/messages.txt"
 
+errors = {
+    "404": "Страница не найдена. Проверьте URL адрес.",
+    "405": "Неразрешенный метод"
+}
+
 
 def users():
     with open("app/static/files/users.txt", "r", encoding="UTF-8") as file:

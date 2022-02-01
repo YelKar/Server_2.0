@@ -1,6 +1,5 @@
 // Прокрутка меню
 function scroll_menu() {
-    if (window.innerWidth < 991) return
     const main = document.querySelector("main")
     const menu = document.getElementById("menu")
     const menu2 = document.getElementsByClassName("menu_open")

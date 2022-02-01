@@ -1,6 +1,8 @@
 from app import app, \
-    base, other_base, days_base
+    base, other_base, days_base, \
+    errors
 from flask import render_template, url_for
+from werkzeug.exceptions import HTTPException
 
 
 @app.route('/')
@@ -30,13 +32,14 @@ def photos(num):
 
 @app.route("/other")
 def other():
-    return render_template("other_pages/other_pages_links.html", base=other_base, title="Другие страницы сайта")
+    return render_template("other_pages/other_pages_links.html",
+                           base=other_base, title="Другие страницы сайта")
 
 
-@app.errorhandler(404)
-def not_found(e):
-    print(e)
-    return render_template("404.html", title="404", error=e, base=base)
+@app.errorhandler(HTTPException)
+def error(e):
+    code = str(e)[:3]
+    return render_template("error.html", title=f"{code} - {errors[code]}", error=e, base=base)
 
 
 # Ссылки на другие страницы

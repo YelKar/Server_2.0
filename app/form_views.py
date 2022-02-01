@@ -48,8 +48,9 @@ def send_messages():
         "status": "OK",
     }
 
+
 # Form
-@app.route("/new_account", methods=["GET", "POST"])
+@app.route("/new_account", )
 def new_account():
     if request.method == "POST":
         get_form = dict(request.form)
