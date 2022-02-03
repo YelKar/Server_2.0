@@ -1,11 +1,10 @@
 var host = "http://192.168.1.3:2222"
 var get = "/messenger/get_messages"
 var send = "/messenger/send_messages"
-var json;
 after = 0
 
 var messenger = document.getElementById("messenger")
-messenger.scrollTo(0, 999999)
+
 
 function httpGet(url) {
     var xmlHttp = new XMLHttpRequest();
@@ -13,6 +12,8 @@ function httpGet(url) {
     xmlHttp.send( null );
     return JSON.parse(xmlHttp.responseText);
 }
+
+var json = httpGet(get)["messages"];
 
 
 
@@ -33,7 +34,6 @@ function to_document() {
         `
     }
     p.innerHTML = ans;
-
 }
 
 function listen(){
@@ -41,14 +41,13 @@ function listen(){
     var scroll = messenger.scrollTop + messenger.offsetHeight;
     var height = messenger.offsetHeight;
     var new_json = httpGet(get)["messages"];
-
-    if (json != new_json) {
-        to_document()
+    console.log(json == new_json, json, new_json)
+    if (json.length != new_json.length) {
+        json = new_json
         if (scroll >= height - 10) {
             messenger.scrollTo(0, 9999999)
         }
     }
-
 
 }
 
@@ -82,4 +81,6 @@ function enterMessage() {
 }
 
 listen()
+to_document()
+setTimeout(function () {messenger.scrollTo(0, 999999)}, 10)
 setInterval(listen, 1000)
