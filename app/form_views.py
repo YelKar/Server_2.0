@@ -50,7 +50,7 @@ def send_messages():
 
 
 # Form
-@app.route("/new_account", )
+@app.route("/new_account", methods=["POST", "GET"])
 def new_account():
     if request.method == "POST":
         get_form = dict(request.form)
