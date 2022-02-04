@@ -1,0 +1,17 @@
+{% extends base %}
+
+{% block content %}
+    {% for category, msg in get_flashed_messages(True) %}
+    <div class="flash {{ category }}">{{ msg }}</div>
+    {% endfor %}
+    <br>
+<form action="" method="POST" id="authorize">
+    {{ form.csrf_token() }}
+    {% for field in form if field.name != "csrf_token" %}
+        <p class="{{ field.type }}"> {{ field.label() }}
+            {{ field }}
+        </p>
+
+    {% endfor %}
+</form>
+{% endblock %}

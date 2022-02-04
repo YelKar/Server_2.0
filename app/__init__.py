@@ -1,10 +1,10 @@
 from flask import Flask
 import json
+from .config import Config
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "skjdgfbjkjbsdhkvaknclkjhabflabchjbsdb"
-app.debug = True
+app.config.from_object(Config)
 
 base = "base.html"
 other_base = "other_base.html"

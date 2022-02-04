@@ -2,7 +2,7 @@ from flask import render_template, request, flash, redirect
 from app import app, base, other_base,\
     messages_file_route, users, new_user
 import json
-
+from app.forms import Form
 
 # Messenger
 with open(messages_file_route, "r", encoding="UTF-8") as messages_file:
@@ -116,3 +116,12 @@ def login():
 @app.route('/profile/<string:username>')
 def profile(username):
     return render_template("profile.html", user=username, base=base, title="Профиль")
+
+
+@app.route('/form', methods=['GET', 'POST'])
+def form():
+    form = Form()
+    if form.validate_on_submit():
+        print(form.name.data)
+        print(form.password.data)
+    return render_template("form.html", form=form, base=base)
