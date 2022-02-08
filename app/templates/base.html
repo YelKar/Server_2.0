@@ -23,6 +23,7 @@
     <header id="test">
     {% block header %}
         <h1>{% block h1 %}Сайт начинающего верстальщика 2.0{% endblock %}</h1>
+        <a href="{{ url_for("login") }}"><img src="{{ url_for("static", filename="img/raccoon.svg") }}" alt="raccoon" id="login_img"></a>
     {% endblock %}
     </header>
     <nav id="menu">

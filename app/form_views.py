@@ -2,7 +2,7 @@ from flask import render_template, request, flash, redirect
 from app import app, base, other_base,\
     messages_file_route, users, new_user
 import json
-from app.forms import Form
+from app.forms import *
 
 # Messenger
 with open(messages_file_route, "r", encoding="UTF-8") as messages_file:
@@ -52,52 +52,73 @@ def send_messages():
 # Form
 @app.route("/new_account", methods=["POST", "GET"])
 def new_account():
-    if request.method == "POST":
-        get_form = dict(request.form)
+    form = NewAccount()
+    if form.validate_on_submit():
+        print(form)
+#     if request.method == "POST":
+#         get_form = dict(request.form)
+#
+#         is_valid = {
+#             "is_username": get_form["username"],
+#             "is_not_in_site": not any(
+#                 map(
+#                     lambda user: get_form["username"] == user["username"], users()
+#                 )
+#             ),
+#             "is_name": get_form["name"],
+#             "is_valid_name": get_form["name"].isalpha() or not get_form["name"],
+#             "is_email/tel": get_form["email"] or get_form["tel"],
+# #            "is_chosen": get_form.get("select", False)
+#         }
+#
+#         flash_messages = {
+#             "is_username": "Введите имя пользователя",
+#             "is_not_in_site": "Такой никнейм уже есть",
+#             "is_name": "Введите имя",
+#             "is_valid_name": "Некорректное имя",
+#             "is_email/tel": "Введите номер телефона или почту",
+# #            "is_chosen": "Выберите один из вариантов"
+#         }
+#
+#         if not all(is_valid.values()):
+#             flash("Сообщение не принято: ", category="error title")
+#             for mess, is_val in zip(flash_messages.values(), is_valid.values()):
+#                 if not is_val:
+#                     flash(mess, category="error")
+#
+#         else:
+#             flash("Сообщение принято", category="ok")
+#             get_form["is_admin"] = False
+#             print("Add")
+#             new_user(get_form)
+#         print("_" * 20)
+#         for name, value in get_form.items():
+#             print(f"{name}: {value}")
+#         print("_" * 20)
 
-        is_valid = {
-            "is_username": get_form["username"],
-            "is_not_in_site": not any(
-                map(
-                    lambda user: get_form["username"] == user["username"], users()
-                )
-            ),
-            "is_name": get_form["name"],
-            "is_valid_name": get_form["name"].isalpha() or not get_form["name"],
-            "is_email/tel": get_form["email"] or get_form["tel"],
-#            "is_chosen": get_form.get("select", False)
-        }
-
-        flash_messages = {
-            "is_username": "Введите имя пользователя",
-            "is_not_in_site": "Такой никнейм уже есть",
-            "is_name": "Введите имя",
-            "is_valid_name": "Некорректное имя",
-            "is_email/tel": "Введите номер телефона или почту",
-#            "is_chosen": "Выберите один из вариантов"
-        }
-
-        if not all(is_valid.values()):
-            flash("Сообщение не принято: ", category="error title")
-            for mess, is_val in zip(flash_messages.values(), is_valid.values()):
-                if not is_val:
-                    flash(mess, category="error")
-
-        else:
-            flash("Сообщение принято", category="ok")
-            get_form["is_admin"] = False
-            print("Add")
-            new_user(get_form)
-        print("_" * 20)
-        for name, value in get_form.items():
-            print(f"{name}: {value}")
-        print("_" * 20)
-
-    return render_template("new_account.html", base=base, title="Авторизация")
+    return render_template("new_account.html", base=base, title="Авторизация", form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        print(form.username.data)
+        print(form.password.data)
+        for user in users():
+            if form.username.data == user["username"]:
+                if form.password.data == user["password"]:
+                    return redirect(f"/profile/{user['username']}")
+                else:
+                    flash("Неверный пароль", category="error")
+                    break
+        else:
+            flash("Неверный логин", category="error")
+    return render_template("login.html", form=form, base=base)
+
+
+@app.route('/form', methods=['GET', 'POST'])
+def form():
     if request.method == "POST":
         get_form = dict(request.form)
         for user in users():
@@ -110,18 +131,10 @@ def login():
         else:
             flash("Неверный логин", category="error")
 
-    return render_template("login.html", base=base)
+    return render_template("form.html", base=base)
 
 
 @app.route('/profile/<string:username>')
 def profile(username):
     return render_template("profile.html", user=username, base=base, title="Профиль")
 
-
-@app.route('/form', methods=['GET', 'POST'])
-def form():
-    form = Form()
-    if form.validate_on_submit():
-        print(form.name.data)
-        print(form.password.data)
-    return render_template("form.html", form=form, base=base)

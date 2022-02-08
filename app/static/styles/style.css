@@ -29,6 +29,26 @@ header {
   z-index: 10;
 }
 
+#login_img {
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  width: 100px;
+  height: 100px;
+}
+#login_img:hover {
+  background-color: #3a3a3a;
+}
+
+path.black {
+  fill: #555;
+}
+path.white {
+  fill: #999;
+}
+
 a[href] {
   text-decoration: none;
   font-weight: bold;
@@ -69,10 +89,10 @@ a[href]:active, a[href]:visited:active {
 }
 #skills progress::-webkit-progress-bar {
   width: 100%;
-  background-color: #444;
+  background-color: #3a3a3a;
 }
 #skills progress::-webkit-progress-value {
-  background-color: #666;
+  background-color: #555;
 }
 
 body::-webkit-scrollbar, .menu_open::-webkit-scrollbar, #messenger::-webkit-scrollbar {

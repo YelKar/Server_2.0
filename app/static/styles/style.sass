@@ -29,6 +29,23 @@ header
 
     z-index: 10
 
+#login_img
+    box-sizing: border-box
+    position: absolute
+    right: 0
+    top: 0
+    border: none
+    width: 100px
+    height: 100px
+    &:hover
+        background-color: $menu_background_color
+
+path
+    &.black
+        fill: $header_background_color
+    &.white
+        fill: $text_color
+
 a[href]
     text-decoration: none
     font-weight: bold
@@ -63,9 +80,9 @@ a[href]
         overflow: hidden
         &::-webkit-progress-bar
             width: 100%
-            background-color: #444
+            background-color: $menu_background_color
         &::-webkit-progress-value
-            background-color: #666
+            background-color: $header_background_color
 
 body, .menu_open, #messenger
     &::-webkit-scrollbar

@@ -12,7 +12,19 @@ class Form(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    name = StringField("Логин: *", validators=[DataRequired()], render_kw={"placeholder": "Введите имя"})
+    username = StringField("Логин: *", validators=[DataRequired()], render_kw={"placeholder": "Введите имя"})
     password = PasswordField("Пароль: *", validators=[DataRequired()], render_kw={"placeholder": "Введите пароль"})
     remember = BooleanField('Запомнить', default='checked')
     submit = SubmitField("Отправить")
+
+
+class NewAccount(FlaskForm):
+    nikname = StringField("Никнейм: *", validators=[DataRequired()], render_kw={"placeholder": "Введите никнейм"})
+    password = PasswordField("Пароль: *", validators=[DataRequired()], render_kw={"placeholder": "Введите пароль"})
+
+    name = StringField("Имя: *", validators=[DataRequired()], render_kw={"placeholder": "Введите имя"})
+    lastname = StringField("Фамилия: ", validators=[DataRequired()], render_kw={"placeholder": "Введите имя"})
+
+    email = EmailField("Email: ", validators=[Email()], render_kw={"placeholder": "Введите вашу почту"})
+    number = EmailField("Телефон: ", validators=[Email()], render_kw={"placeholder": "Введите ваш номер телефона"})
+
