@@ -13,7 +13,7 @@
             {{ field }}
             {{ field.label() if field.type == "BooleanField" }}
         </p>
-
+        {% if field.type == "PasswordField" %}<br>{% endif %}
     {% endfor %}
 </form>
 {% endblock %}
