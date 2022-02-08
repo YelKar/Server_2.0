@@ -90,31 +90,6 @@ button, input[type="button"], input[type="reset"], input[type="submit"]
 path
     stroke: $text_color
 
-.BooleanField
-    position: relative
-    height: 20px
-    input
-        -webkit-appearance: none
-        -moz-appearance: none
-        appearance: none
-        position: absolute
-    label:before:has(+ input:checked)
-        background-color: $header_background_color
-    label
-        position: absolute
-        &:before
-            margin-right: 10px
-            content: ""
-            display: block
-            width: 20px
-            height: 20px
-            position: absolute
-            top: 0
-            left: 0
-            background-color: $background_color
-
-            border: 4px solid $header_background_color
-
 //input[type="checkbox"]
 //    position: relative
 //    -webkit-appearance: none

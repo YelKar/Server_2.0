@@ -202,6 +202,126 @@ path {
   max-height: 80px;
 }
 
+#authorize {
+  width: 100%;
+  max-width: 300px;
+}
+
+input:not(input[type=checkbox]), select {
+  height: 40px;
+  background-color: #3a3a3a;
+  border: 4px solid #555;
+  color: #999;
+  outline: none;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 20px;
+}
+input:not(input[type=checkbox])[type=submit], input:not(input[type=checkbox])[type=reset], select[type=submit], select[type=reset] {
+  width: 49%;
+  margin-left: 0;
+  margin-right: 0;
+}
+input:not(input[type=checkbox])[type=text], input:not(input[type=checkbox])[type=password], input:not(input[type=checkbox])[type=email], input:not(input[type=checkbox])[type=tel], select[type=text], select[type=password], select[type=email], select[type=tel] {
+  cursor: url("../files/cursors/text.cur"), text;
+}
+
+.flash {
+  width: 100%;
+  max-width: 300px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  height: 40px;
+  font-weight: bold;
+  margin: 1px;
+}
+.flash.ok {
+  background-color: #3a3a3a;
+}
+.flash.error {
+  background-color: #222;
+  color: #900;
+  border: 4px solid #900;
+  text-decoration: underline;
+}
+.flash.error.title {
+  font-size: 20px;
+}
+
+.checkbox {
+  width: 100%;
+  height: 20px;
+  position: relative;
+}
+.checkbox_input {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+.checkbox_input:checked + .checkbox_label {
+  font-weight: bold;
+}
+.checkbox_input:checked + .checkbox_label:before {
+  background-color: #555;
+}
+.checkbox_label {
+  padding-left: 40px;
+  cursor: url("../files/cursors/link.cur"), pointer;
+}
+.checkbox_label:before {
+  margin-right: 10px;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  border: 4px solid #555;
+}
+
+.BooleanField {
+  position: relative;
+  height: 20px;
+}
+.BooleanField input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+.BooleanField input:checked + label::before {
+  background-color: #555;
+}
+.BooleanField label {
+  position: absolute;
+  padding-left: 40px;
+  line-height: 20px;
+  cursor: url("../files/cursors/link.cur"), pointer;
+}
+.BooleanField label:before {
+  margin-right: 10px;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  border: 4px solid #555;
+}
+
+.SubmitField {
+  margin: 40px 0;
+}
+
+select {
+  cursor: url(../img/select_cursor.png), pointer;
+}
+
 #navigation_back, #navigation {
   height: 50px;
   background-color: #3a3a3a;

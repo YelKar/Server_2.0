@@ -8,8 +8,10 @@
 <form action="" method="POST" id="authorize">
     {{ form.csrf_token() }}
     {% for field in form if field.name != "csrf_token" %}
-        <p class="{{ field.type }}"> {{ field.label() }}
+        <p class="{{ field.type }}">
+            {{ field.label() if field.type != "BooleanField" and field.type != "SubmitField" }}
             {{ field }}
+            {{ field.label() if field.type == "BooleanField" }}
         </p>
 
     {% endfor %}
