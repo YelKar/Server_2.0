@@ -30,16 +30,11 @@ def photos(num):
                            base=days_base, num=num, max=3, name="photos")
 
 
-@app.route("/other")
-def other():
-    return render_template("other_pages/other_pages_links.html",
-                           base=other_base, title="Другие страницы сайта")
-
-
 @app.errorhandler(HTTPException)
 def error(e):
     code = str(e)[:3]
-    return render_template("error.html", title=f"{code} - {errors[code]}", error=e, base=base)
+    return render_template("error.html", title=f"{code} - {errors[code]}",
+                           code=code, error=e, base=base)
 
 
 # Ссылки на другие страницы
