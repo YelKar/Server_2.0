@@ -29,6 +29,26 @@ header {
   z-index: 10;
 }
 
+#login_img {
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  width: 100px;
+  height: 100px;
+}
+#login_img:hover {
+  background-color: #3a3a3a;
+}
+
+path.black {
+  fill: #555;
+}
+path.white {
+  fill: #999;
+}
+
 a[href] {
   text-decoration: none;
   font-weight: bold;
@@ -69,10 +89,10 @@ a[href]:active, a[href]:visited:active {
 }
 #skills progress::-webkit-progress-bar {
   width: 100%;
-  background-color: #444;
+  background-color: #3a3a3a;
 }
 #skills progress::-webkit-progress-value {
-  background-color: #666;
+  background-color: #555;
 }
 
 body::-webkit-scrollbar, .menu_open::-webkit-scrollbar, #messenger::-webkit-scrollbar {
@@ -103,35 +123,6 @@ button, input[type=button], input[type=reset], input[type=submit] {
 
 path {
   stroke: #999;
-}
-
-.BooleanField {
-  position: relative;
-  height: 20px;
-}
-.BooleanField input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  position: absolute;
-}
-.BooleanField label:before:has(+ input:checked) {
-  background-color: #555;
-}
-.BooleanField label {
-  position: absolute;
-}
-.BooleanField label:before {
-  margin-right: 10px;
-  content: "";
-  display: block;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #222;
-  border: 4px solid #555;
 }
 
 .button_img {
@@ -310,6 +301,42 @@ input:not(input[type=checkbox])[type=text], input:not(input[type=checkbox])[type
   border: 4px solid #555;
 }
 
+.BooleanField {
+  position: relative;
+  height: 20px;
+}
+.BooleanField input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+.BooleanField input:checked + label::before {
+  background-color: #555;
+}
+.BooleanField label {
+  position: absolute;
+  padding-left: 40px;
+  line-height: 20px;
+  cursor: url("../files/cursors/link.cur"), pointer;
+}
+.BooleanField label:before {
+  margin-right: 10px;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  border: 4px solid #555;
+}
+
+.SubmitField {
+  margin: 40px 0;
+}
+
 select {
   cursor: url(../img/select_cursor.png), pointer;
 }
@@ -319,7 +346,6 @@ main {
   justify-content: center;
   align-items: center;
   height: 100%;
-  border: 5px solid red;
 }
 
 .clock {

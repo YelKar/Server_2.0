@@ -19,14 +19,14 @@ errors = {
 
 
 def users():
-    with open("app/static/files/users.txt", "r", encoding="UTF-8") as file:
+    with open("app/static/files/users.json", "r", encoding="UTF-8") as file:
         return json.loads(file.read())
 
 
 def new_user(user):
     list_users = users()
     list_users.append(user)
-    with open("app/static/files/users.txt", "w", encoding="UTF-8") as file:
+    with open("app/static/files/users.json", "w", encoding="UTF-8") as file:
         file.write(json.dumps(list_users))
 
 

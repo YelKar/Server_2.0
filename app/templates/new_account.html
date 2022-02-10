@@ -7,6 +7,15 @@
     <br>
 <form action="" method="POST" id="authorize">
     {{ form.csrf_token() }}
+    {% for field in form if field.errors %}
+            <div class="flash error title">{{ field.label() }}</div>
+            {% for error in field.errors %}
+                <div class="flash error">{{ error }}</div>
+            {% endfor %}
+    {% endfor %}
+    {% if not form.errors %}
+        <div class="flash ok">Сообщение принято</div>
+    {% endif %}
     {% for field in form if field.name != "csrf_token" %}
         <p class="{{ field.type }}">
             {{ field.label() if field.type != "BooleanField" and field.type != "SubmitField" }}

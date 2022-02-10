@@ -53,48 +53,52 @@ def send_messages():
 @app.route("/new_account", methods=["POST", "GET"])
 def new_account():
     form = NewAccount()
+    print(form.form_errors, form.number.errors)
     if form.validate_on_submit():
         print(form)
-#     if request.method == "POST":
-#         get_form = dict(request.form)
-#
-#         is_valid = {
-#             "is_username": get_form["username"],
-#             "is_not_in_site": not any(
-#                 map(
-#                     lambda user: get_form["username"] == user["username"], users()
-#                 )
-#             ),
-#             "is_name": get_form["name"],
-#             "is_valid_name": get_form["name"].isalpha() or not get_form["name"],
-#             "is_email/tel": get_form["email"] or get_form["tel"],
-# #            "is_chosen": get_form.get("select", False)
-#         }
-#
-#         flash_messages = {
-#             "is_username": "Введите имя пользователя",
-#             "is_not_in_site": "Такой никнейм уже есть",
-#             "is_name": "Введите имя",
-#             "is_valid_name": "Некорректное имя",
-#             "is_email/tel": "Введите номер телефона или почту",
-# #            "is_chosen": "Выберите один из вариантов"
-#         }
-#
-#         if not all(is_valid.values()):
-#             flash("Сообщение не принято: ", category="error title")
-#             for mess, is_val in zip(flash_messages.values(), is_valid.values()):
-#                 if not is_val:
-#                     flash(mess, category="error")
-#
-#         else:
-#             flash("Сообщение принято", category="ok")
-#             get_form["is_admin"] = False
-#             print("Add")
-#             new_user(get_form)
-#         print("_" * 20)
-#         for name, value in get_form.items():
-#             print(f"{name}: {value}")
-#         print("_" * 20)
+        json_form = {
+            "username": form.username.data,
+            "password": form.password.data,
+            "name": form.name.data,
+            "lastname": form.lastname.data,
+            "email": form.email.data,
+            "number": form.number.data
+        }
+        is_valid = {
+            "is_username": form.username.data,
+            "is_not_in_site": not any(
+                map(
+                    lambda user: form.username.data == user["username"], users()
+                )
+            ),
+            "is_name": form.name.data,
+            "is_valid_name": form.name.data.isalpha() or not form.name.data,
+            "is_email/tel": form.email.data or form.number.data
+        }
+
+        flash_messages = {
+            "is_username": "Введите имя пользователя",
+            "is_not_in_site": "Такой никнейм уже есть",
+            "is_name": "Введите имя",
+            "is_valid_name": "Некорректное имя",
+            "is_email/tel": "Введите номер телефона или почту"
+        }
+
+        if not all(is_valid.values()):
+            flash("Сообщение не принято: ", category="error title")
+            for mess, is_val in zip(flash_messages.values(), is_valid.values()):
+                if not is_val:
+                    flash(mess, category="error")
+
+        else:
+            flash("Сообщение принято", category="ok")
+            json_form["is_admin"] = False
+            print("Add")
+            new_user(json_form)
+        print("_" * 20)
+        for name, value in json_form.items():
+            print(f"{name}: {value}")
+        print("_" * 20)
 
     return render_template("new_account.html", base=base, title="Авторизация", form=form)
 

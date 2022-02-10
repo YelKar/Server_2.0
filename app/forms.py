@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, \
     PasswordField, EmailField, BooleanField, \
     SubmitField
-from wtforms.validators import DataRequired, Email
+from wtforms.validators import DataRequired, Email, ValidationError, StopValidation, Length
 
 
 class Form(FlaskForm):
@@ -21,14 +21,23 @@ class LoginForm(FlaskForm):
 
 
 class NewAccount(FlaskForm):
-    nikname = StringField("Никнейм: *", validators=[DataRequired()], render_kw={"placeholder": "Введите никнейм"})
-    password = PasswordField("Пароль: *", validators=[DataRequired()], render_kw={"placeholder": "Введите пароль"})
+    def validate_number_len(self, field):
+        if "+7" not in field.data and len(field.data):
+            raise ValidationError("Неверный номер")
+
+    def validate_number_digits(self, field):
+        if not field.data[1:].isdigit():
+            raise ValidationError("Доступны только цифры")
+
+    username = StringField("Никнейм: *", validators=[DataRequired()], render_kw={"placeholder": "Введите никнейм"})
+    password = PasswordField("Пароль: *", validators=[DataRequired(), Length(min=4)], render_kw={"placeholder": "Введите пароль"})
 
     name = StringField("Имя: *", validators=[DataRequired()], render_kw={"placeholder": "Введите имя"})
     lastname = StringField("Фамилия: ", validators=[DataRequired()], render_kw={"placeholder": "Введите фамилию"})
 
     email = EmailField("Email: ", validators=[Email()], render_kw={"placeholder": "your@ema.il"})
-    number = StringField("Телефон: ", validators=[DataRequired()],
+    number = StringField("Телефон: ", validators=[validate_number_len, validate_number_digits],
                          render_kw={"placeholder": "+7XXXXXXXXXX"})
 
     submit = SubmitField("Отправить")
+
