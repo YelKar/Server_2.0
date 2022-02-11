@@ -6,37 +6,19 @@
     {% for category, msg in get_flashed_messages(True) %}
     <div class="flash {{ category }}">{{ msg }}</div>
     {% endfor %}
-<form action="{{ url_for("new_account") }}" method="POST" id="authorize">
+<form action="{{ url_for("form") }}" method="POST" id="authorize">
     <label for="username">Никнейм:</label>
-    <input type="text" name="username" id="username" placeholder="Введите фамилию">
+    <input type="text" name="username" id="username" placeholder="Имя пользователя">
 
     <label for="password">Пароль:</label>
-    <input type="password" name="password" id="password" placeholder="Придумайте пароль">
+    <input type="password" name="password" id="password" placeholder="Пароль">
 
-    <br><br>
-    <label for="name">Имя:</label>
-    <input type="text" name="name" id="name" placeholder="Введите имя">
-
-    <label for="lastname">Фамилия:</label>
-    <input type="text" name="lastname" id="lastname" placeholder="Введите фамилию">
-
-    <label for="patronymic">Отчество:</label>
-    <input type="text" name="patronymic" id="patronymic" placeholder="Введите отчество">
-    <br><br>
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" placeholder="your@ema.il">
-
-    <label for="tel">Телефон:</label>
-    <input type="tel" name="tel" id="tel" placeholder="+7XXXXXXXXXX">
     <br>
     <div class="checkbox">
     <input type="checkbox" name="remember" id="checkbox" class="checkbox_input">
     <label class="checkbox_label" for="checkbox">Запомнить</label>
     </div>
     <br>
-
     <input type="submit">
-    <input type="reset">
 </form>
 {% endblock %}

@@ -1,4 +1,6 @@
-from flask import render_template, request, flash, redirect
+from flask import render_template, request, \
+    flash, redirect, session, \
+    url_for
 from app import app, base, other_base,\
     messages_file_route, users, new_user
 import json
@@ -105,30 +107,35 @@ def new_account():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    l_form = LoginForm()
     if form.validate_on_submit():
-        print(form.username.data)
-        print(form.password.data)
+        print(l_form.username.data)
+        print(l_form.password.data)
         for user in users():
-            if form.username.data == user["username"]:
-                if form.password.data == user["password"]:
+            if l_form.username.data == user["username"]:
+                if l_form.password.data == user["password"]:
                     return redirect(f"/profile/{user['username']}")
                 else:
                     flash("Неверный пароль", category="error")
                     break
         else:
             flash("Неверный логин", category="error")
-    return render_template("login.html", form=form, base=base)
+    return render_template("login.html", form=l_form, base=base)
 
 
 @app.route('/form', methods=['GET', 'POST'])
 def form():
+    print("logged-in" in session)
+    if "logged-in" in session:
+        return redirect(url_for("profile", username=session["logged-in"]))
+
     if request.method == "POST":
         get_form = dict(request.form)
         for user in users():
             if get_form["username"] == user["username"]:
                 if get_form["password"] == user["password"]:
-                    return redirect(f"/profile/{user['username']}")
+                    session["logged-in"] = user["username"]
+                    return redirect(url_for("profile", username=user["username"]))
                 else:
                     flash("Неверный пароль", category="error")
                     break
