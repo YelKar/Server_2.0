@@ -53,7 +53,7 @@ var grav = 0;
 var run = true;
 var render_bird = bird;
 var boost = false
-var hit = false;
+var hit = true;
 
 function create() {
     pipe = [];
