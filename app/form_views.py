@@ -149,3 +149,9 @@ def form():
 def profile(username):
     return render_template("profile.html", user=username, base=base, title="Профиль")
 
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("index"))
+
